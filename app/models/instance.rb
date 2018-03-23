@@ -66,8 +66,10 @@ class Instance < ActiveRecord::Base
             '[^0-9]*([0-9][0-9]*).*', '\\1')
             ||
             Regexp_replace(
+              Regexp_replace(
                 Regexp_replace(page, '.*-.*', '~'),
-            '[^~].*','0'),
+              '[^~].*','0'),
+              '~','Z'),
           12,'0'),
           page,
           name.full_name")
